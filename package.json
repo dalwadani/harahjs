@@ -1,0 +1,20 @@
+{
+  "name": "harahjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalwadani/harahjs.git"
+  },
+  "keywords": [],
+  "author": "Dhaifallah Alwadani <dalwadani@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dalwadani/harahjs/issues"
+  },
+  "homepage": "https://github.com/dalwadani/harahjs#readme"
+}
