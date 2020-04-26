@@ -1,20 +1,44 @@
 {
   "name": "harahjs",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Get the area name based on latitude and longitude in Saudi Arabia",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.[t,j]s\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "prepare": "npm run build",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
+  "files": [
+    "lib/**/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dalwadani/harahjs.git"
   },
-  "keywords": [],
   "author": "Dhaifallah Alwadani <dalwadani@gmail.com>",
+  "keywords": [
+    "Geolocation",
+    "Harah"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dalwadani/harahjs/issues"
   },
-  "homepage": "https://github.com/dalwadani/harahjs#readme"
+  "homepage": "https://github.com/dalwadani/harahjs#readme",
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "jest": "^25.4.0",
+    "prettier": "^2.0.5",
+    "ts-jest": "^25.4.0",
+    "tslint": "^6.1.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.8.3"
+  }
 }
