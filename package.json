@@ -1,6 +1,6 @@
 {
   "name": "harahjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Get the area name based on latitude and longitude in Saudi Arabia",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
