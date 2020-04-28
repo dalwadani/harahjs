@@ -1,10 +1,13 @@
 import districts from './districts.json';
 import { Area, Point } from './area';
 
-export function GetHarah({ latitude, longitude }: Point): Area {
+export function GetHarah({ latitude, longitude }: Point): Area | undefined {
   const area: any = districts.find((x: any) => {
     return is_inside([latitude, longitude], x.boundaries[0]);
   });
+
+  if (!area) return;
+
   const { district_id, city_id, region_id, name_ar, name_en } = area;
   return {
     district_id,
