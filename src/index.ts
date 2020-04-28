@@ -1,19 +1,7 @@
 import districts from './districts.json';
+import { Area, Point } from './area';
 
-interface area {
-  district_id: number;
-  city_id: number;
-  region_id: number;
-  name_ar: string;
-  name_en: string;
-}
-
-interface point {
-  latitude: number;
-  longitude: number;
-}
-
-export function GetHarah({ latitude, longitude }: point): area {
+export function GetHarah({ latitude, longitude }: Point): Area {
   const area: any = districts.find((x: any) => {
     return is_inside([latitude, longitude], x.boundaries[0]);
   });
@@ -31,17 +19,14 @@ function is_inside(point: [number, number], vs: [number, number][]) {
   // ray-casting algorithm based on
   // http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
 
-  var x = point[0],
-    y = point[1];
+  const [x, y] = point;
 
-  var inside = false;
-  for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
-    var xi = vs[i][0],
-      yi = vs[i][1];
-    var xj = vs[j][0],
-      yj = vs[j][1];
+  let inside = false;
+  for (let i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+    const [xi, yi] = vs[i];
+    const [xj, yj] = vs[j];
 
-    var intersect = yi > y != yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+    const intersect = yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
     if (intersect) inside = !inside;
   }
 
